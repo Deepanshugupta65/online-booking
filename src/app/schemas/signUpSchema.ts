@@ -10,7 +10,10 @@ export const usernameValidation = z
 
     //   using object for multiple field
  export const signUpSchema = z.object({
+    firstname:z.string().min(2,{message:"firstname must be atleast 2 char"}),
+    lastname:z.string().min(2,{message:"lastname must be atleast 2 character"}),
     username:usernameValidation,
     email:z.string().email({message:"Invalid email address"}),
-    password:z.string().min(6,{message:"password must be at least 6 char"})
+    password:z.string().min(6,{message:"password must be at least 6 char"}),
+    address:z.string().min(3,{message:"address must be atleast 3 character"})
  })     

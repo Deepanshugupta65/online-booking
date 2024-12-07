@@ -1,12 +1,23 @@
 import mongoose,{Schema,Document} from "mongoose";
 
 export interface User extends Document{
+    firstname:string;
+    lastname:string;
     username:string;
     email:string;
     password:string;
+    address:string;
 }
 
 const UserSchema:Schema<User> = new Schema({
+    firstname:{
+        type:String,
+        required:[true,"firstname is required"],
+    },
+    lastname:{
+        type:String,
+        required:[true,"lastname is required"],
+    },
     username:{
         type:String,
         required:[true,"Username is required"],
@@ -22,7 +33,11 @@ const UserSchema:Schema<User> = new Schema({
     password:{
         type:String,
         required:[true,"Password is required"],
-    }
+    },
+    address:{
+        type:String,
+        required:[true,"address is required"]
+    },
 })
 
 const UserModel = (mongoose.models.User as mongoose.Model<User>)|| mongoose.model<User>("User",UserSchema)
